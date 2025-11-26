@@ -1,8 +1,125 @@
 <!DOCTYPE html>
 <head>
     <title>ELECTERA'26</title>
-    <link rel="stylesheet" a href="home.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <center><h1>ELECTERA'26</h1></center>
-</body>
+
+<div class="background">
+    <div class="bubbles">
+        <span style="--i:11;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:23;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:16;"></span>
+        <span style="--i:19;"></span>
+        <span style="--i:20;"></span>
+        <span style="--i:22;"></span>
+        <span style="--i:25;"></span>
+        <span style="--i:13;"></span>
+        <span style="--i:1;"></span>
+       
+    </div>
+</div>
+<div class="navigation">
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li>Events</li>
+        <li>Timeline</li>
+        <li>Members</li>
+        <li>Contact</li>
+        <button>Register</button>
+    </ul>
+  
+</div>
+<div class ="cit">
+    <h1>COIMBATORE INSTITUTE OF TECHNOLOGY</h1>
+    <h2>DEPARTMENT OF ELECTRICAL AND ELECTRONICS ENGINEERING</h2>
+</div>
+
+
+<h2>Countdown Timer</h2>
+<div class="timer-container">
+    
+    <div class="timer">
+      <div class="time-box">
+        <span id="days">00</span>
+        <p>Days</p>
+      </div>
+      <div class="time-box">
+        <span id="hours">00</span>
+        <p>Hours</p>
+      </div>
+      <div class="time-box">
+        <span id="minutes">00</span>
+        <p>Minutes</p>
+      </div>
+      <div class="time-box">
+        <span id="seconds">00</span>
+        <p>Seconds</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+    const targetDate = new Date("Feb 25, 2026 00:00:00").getTime();
+
+    function updateTimer() {
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      if (timeLeft <= 0) {
+        document.querySelector(".timer").innerHTML = "<h2>🎉 Time's Up! 🎉</h2>";
+        return;
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days < 10 ? "0" + days : days;
+      document.getElementById("hours").textContent = hours < 10 ? "0" + hours : hours;
+      document.getElementById("minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
+      document.getElementById("seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
+  <h2>ABOUT</h2>
+ <div class="about_cit">
+
+    <div id="one"><img src="cit.jpg"></div>
+    
+    <div id="two"><p>Established in 1956 by the V. Rangasamy Naidu Educational Trust, Coimbatore Institute of Technology (CIT) is one of India’s most reputed and prestigious engineering institutions. With a rich legacy spanning decades, CIT has consistently excelled in technical education, research, and innovation, shaping generations of skilled engineers and leaders. Guided by its mission to impart high-quality education and training, the institute strives to develop world-class engineers who possess strong technical foundations, a forward-looking mindset, and the ability to create innovative solutions that benefit the nation and the global community. CIT’s vision focuses on nurturing individuals who not only excel in engineering knowledge but also embody deep social responsibility, enabling them to address present and future challenges with confidence and commitment. The institute’s core values reflect its dedication to holistic growth—advancing society through impactful technology, enhancing student employability through industry-ready skills, and ensuring quality education supported by modern infrastructure, cutting-edge curricula, vibrant research culture, and an enriching academic environment. With a strong emphasis on merit recognition, transparency, empathy, and continuous improvement, CIT remains a symbol of excellence, inspiring students to strive, achieve, and contribute meaningfully to the world.</p>
+    <center><button onclick="window.location.href='https://www.cit.edu.in/'">View more</button></center>
+</div>   
+  </div>
+  <br><br><br>
+  <h2>SPECIAL THANKS TO</h2>
+  <div class="thanks">
+    
+    <p>SPECIAL THANKS</p>
+    <div id="up">
+  <h1>Dr.Vasantharathna</h1>
+  <h3>Head Of The Department</h3>
+</div>
+<p>FACULTY ADVISOR</p><center>
+<div id="middle">
+  <h1>Dr.Suresh</h1>
+  <h3>Associate Professor</h3>
+</div>
+<div id="middle">
+  <h1>Dr.Radha</h1>
+  <h3>Associate Professor</h3>
+</div>
+<div id="middle">
+  <h1>Dr.Mynavathi</h1>
+  <h3>Associate Professor</h3>
+</div> </center>
+</div> </body>
