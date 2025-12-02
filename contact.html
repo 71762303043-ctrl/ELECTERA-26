@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELECTERA'26</title>
+<link rel="stylesheet" href="contact1.css">
+</head>
+<body>
+
+
+<div class="background">
+    <div class="bubbles">
+        <span style="--i:11;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:23;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:16;"></span>
+    </div>
+</div>
+
+
+
+
+<center>
+    <h1 >Contact Us</h1>
+
+    <h3>Address</h3>
+    <img src="cit.jpg" width="500" height="300" alt="cit"></img>
+
+    
+    <div id="animatedAddressContainer">
+        <span id="animatedAddress"></span><span id="cursor">|</span>
+    </div>
+
+    
+    <div class="contact-row">
+        <div class="contact-box">
+            <img src="email.jpg" width="20px" height="20px"></img>
+            <h2>Email</h2>
+            <p><a href="mailto:electera@gmail.com">electera@gmail.com</a></p>
+        </div>
+
+        <div class="contact-box">
+            <img src="linkedin.jpg" width="20px" height="20px"></img>
+            <h2>LinkedIn</h2>
+            <p><a href="#">Electera26</a></p>
+        </div>
+
+        <div class="contact-box">
+            <img src="insta.jpg" width="20px" height="20px"></img>
+            <h2>Instagram</h2>
+            <p><a href="#">electera@26</a></p>
+        </div>
+    </div>
+    </center>
+
+<center>
+    <div class="phone">
+        <img src="phone.png" width="20px" height="20px"></img>
+        <h2 >Contact</h2>
+        <h3>YYY     - +91 1234567890</h3>
+         <h3>YYY  - +91 1234567890</h3>
+        
+    </div>
+    <br>
+
+
+    <div class="right">
+        <form>
+            <table>
+                <tr>
+                    <td>Name</td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Your Name"/></td>
+                </tr>
+                   <tr>
+                    <td>Email</td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Enter your email"/></td>
+                </tr>
+                   <tr>
+                    <td>Message</td>
+                </tr>
+                <tr>
+                    <td><textarea placeholder="How can we help?" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>
+                       <button type="submit">Send message</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+     
+    </div>
+</div>
+<div class="location">
+    <h2>Location</h2><br>
+    <img src="map.png" alt="map"><br>
+    <a href="https://maps.app.goo.gl/FfKB7QNMA8mm7KCz7" style="color:azure">Google Map</a>
+</div>
+   </center>
+
+
+
+
+<script>
+    const address = "Coimbatore Institute of Technology, Peelamedu, Civil Aerodrome Post, Coimbatore 641 014";
+    const container = document.getElementById("animatedAddress");
+    let index = 0;
+
+    function typeAddress() {
+        container.textContent = address.substring(0, index + 1);
+        index++;
+
+        if(index <= address.length) {
+            setTimeout(typeAddress, 70); 
+        } else {
+            setTimeout(() => { eraseAddress(); }, 2000); 
+        }
+    }
+
+    function eraseAddress() {
+        if(index >= 0){
+            container.textContent = address.substring(0, index - 1);
+            index--;
+            setTimeout(eraseAddress, 30); 
+        } else {
+            setTimeout(typeAddress, 500); 
+        }
+    }
+
+    window.onload = typeAddress;
+</script>
+
+</body>
+</html>
