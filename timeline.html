@@ -3,89 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elect-Era'25 | Timeline</title>
+    <title>Event Schedule</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="timeline.css">
 </head>
-
 <body>
-
-
-
-<div class="cloud-bg"></div>
-
-<div class="particles">
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
+  <div class="background">
+    <div class="bubbles">
+        <span style="--i:11;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:23;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:16;"></span>
+        <span style="--i:19;"></span>
+        <span style="--i:20;"></span>
+        <span style="--i:22;"></span>
+        <span style="--i:25;"></span>
+        <span style="--i:13;"></span>
+        <span style="--i:1;"></span>
+       
+    </div>
 </div>
+    <h1>EVENT SCHEDULE</h1>
+    
+    <div class="tabs-container" id="tabsContainer">
+        <button class="tab-button active" data-day="day1" data-track="tech">Technical</button>
+        <button class="tab-button" data-day="day1" data-track="nontech">Non-Technical</button>
+        <button class="tab-button" data-day="day2" data-track="tech">Technical</button>
+        <button class="tab-button" data-day="day2" data-track="nontech">Non-Technical</button>
+        <button class="tab-button" data-day="all" data-track="flagship">Flagship Events</button>
+    </div>
+    <h3>Click the dot on the clock dial to know about the timing of the events!</h3>
 
-<h1 class="title">SYMPOSIUM TIMELINE</h1>
+    <div class="clock-container" id="clockContainer">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        
+        <div id="dialNumbers"></div>
 
-<div class="timeline-container">
+        <div id="hourHand" class="hand"></div>
+        <div id="minuteHand" class="hand"></div>
+        
+        <div id="digitalTime">00:00:00</div>
 
-    <div class="row">
-        <div class="card red">
-            <h2>Circuit Conquerors</h2>
-            <p>10:00 AM - 11:00 AM</p>
-        </div>
-        <div class="card blue">
-            <h2>Wire It Up</h2>
-            <p>10:30 AM - 12:00 PM</p>
-        </div>
-        <div class="card green">
-            <h2>Surprise Show</h2>
-            <p>11:00 AM - 12:00 PM</p>
-        </div>
+        <div class="center-dot"></div>
     </div>
 
-    <div class="separator-line">
-        <div class="dot"></div>
-        <div class="dot center"></div>
-        <div class="dot"></div>
+    <div class="event-details" id="eventDetails">
+        <div class="details-title" id="detailsTitle"></div>
+        <p id="detailsTime"></p>
+        <p id="detailsDesc"></p>
     </div>
 
-    <div class="row">
-        <div class="card yellow">
-            <h2>Lead & Lag</h2>
-            <p>2:30 PM - 4:00 PM</p>
-        </div>
-        <div class="card blue">
-            <h2>Tech Branch</h2>
-            <p>3:00 PM - 4:30 PM</p>
-        </div>
-        <div class="card green">
-            <h2>Quiz-O-Mania</h2>
-            <p>12:30 PM - 1:30 PM</p>
-        </div>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
-    <div class="separator-line">
-        <div class="dot"></div>
-        <div class="dot center"></div>
-        <div class="dot"></div>
-    </div>
+    <script>
+        const clockContainer = document.getElementById('clockContainer');
+        const eventDetails = document.getElementById('eventDetails');
+        const tabsContainer = document.getElementById('tabsContainer');
+        const centerDot = document.querySelector('.center-dot');
+        const digitalTimeDisplay = document.getElementById('digitalTime');
+        const hourHand = document.getElementById('hourHand');
+        const minuteHand = document.getElementById('minuteHand');
+        const dialNumbersContainer = document.getElementById('dialNumbers');
 
-    <div class="row">
-        <div class="card red">
-            <h2>Code Debugging</h2>
-            <p>2:00 PM - 4:00 PM</p>
-        </div>
-        <div class="card blue">
-            <h2>The Hunt</h2>
-            <p>10:00 AM - 11:30 AM</p>
-        </div>
-        <div class="card purple">
-            <h2>CID</h2>
-            <p>11:00 AM - 12:00 PM</p>
-        </div>
-    </div>
+        let radius = 250; 
+        let dialRadius = radius * 0.9; 
+        
+        
+        function calculateRadius() {
+         
+            radius = clockContainer.offsetWidth / 2;
+            dialRadius = radius * 0.9;
+        }
 
-    <div class="separator-line">
-        <div class="dot"></div>
-        <div class="dot center"></div>
-        <div class="dot"></div>
-    </div>
 
-</div>
+        function getCssVar(name) {
+             return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+        }
+        
+       
+        function renderDialNumbers() {
+            dialNumbersContainer.innerHTML = ''; 
+            for (let i = 1; i <= 12; i++) {
+                const angleDegrees = (i * 30) - 90;
+                const angleRadians = angleDegrees * (Math.PI / 180);
 
+                const x = radius + dialRadius * Math.cos(angleRadians);
+                const y = radius + dialRadius * Math.sin(angleRadians);
+
+                const numberDiv = document.createElement('div');
+                numberDiv.className = 'dial-number';
+                numberDiv.textContent = i;
+                
+                numberDiv.style.top = `${y}px`;
+                numberDiv.style.left = `${x}px`;
+                
+                dialNumbersContainer.appendChild(numberDiv);
+            }
+        }
+
+        
+        const eventData = {
+            flagship: [
+                { time: 10.30, title: "SPARK A THON", color: getCssVar('--event-color-flagship'), description: "The premier coding marathon and development challenge." },
+                { time: 12.00, title: "SPARK SUMMIT", color: getCssVar('--event-color-flagship'), description: "Keynotes and plenary session with industry leaders." },
+                { time: 14.30, title: "PROJECT EXPO", color: getCssVar('--event-color-flagship'), description: "Showcase of the top student projects and innovations." },
+            ],
+            day1: {
+                tech: [
+                    { time: 9.30, title: "CLUE 2 CIRCUIT", color: getCssVar('--event-color-tech'), description: "An exhilarating treasure hunt based on circuit theory." },
+                    { time: 11.30, title: "CODE FUSION", color: getCssVar('--event-color-tech'), description: "A rapid-fire coding and debugging competition." },
+                    { time: 14.00, title: "MIRROR THE WEB", color: getCssVar('--event-color-tech'), description: "Front-end web design and clone challenge." },
+                    { time: 16.00, title: "OHM MY CIRCUIT", color: getCssVar('--event-color-tech'), description: "Advanced circuit design and simulation competition." },
+                ],
+                nontech: [
+                    { time: 10.00, title: "AI MIMIC", color: getCssVar('--event-color-nontech'), description: "Guess the personality based on AI-generated answers." },
+                    { time: 12.00, title: "QUIZ CARNIVAL", color: getCssVar('--event-color-nontech'), description: "General knowledge and pop culture quiz competition." },
+                    { time: 14.30, title: "IPL AUCTION", color: getCssVar('--event-color-nontech'), description: "Mock auction testing managerial and budgeting skills." },
+                    { time: 17.00, title: "THE UPSIDE DOWN", color: getCssVar('--event-color-nontech'), description: "Escape room challenge with a Stranger Things theme." },
+                ]
+            },
+            day2: {
+                tech: [
+                    { time: 9.00, title: "BRAIN BREAKER", color: getCssVar('--event-color-tech'), description: "Logic puzzles and advanced problem-solving event." },
+                    { time: 10.30, title: "CHASE & BUILD", color: getCssVar('--event-color-tech'), description: "Robot building and navigational contest." },
+                    { time: 13.00, title: "SIGNAL QUEST", color: getCssVar('--event-color-tech'), description: "Digital signal processing and analysis challenge." },
+                    { time: 15.30, title: "SHOCK AND SURGE", color: getCssVar('--event-color-tech'), description: "Power systems and electrical safety challenge." },
+                ],
+                nontech: [
+                    { time: 9.00, title: "TYPING ARENA", color: getCssVar('--event-color-nontech'), description: "Fastest fingers first typing speed contest." },
+                    { time: 11.00, title: "MIND MATRIX", color: getCssVar('--event-color-nontech'), description: "Logic and lateral thinking puzzles contest." },
+                    { time: 14.00, title: "LUNCH & NETWORKING", color: getCssVar('--event-color-nontech'), description: "Final lunch service and closing networking." },
+                    { time: 16.30, title: "FAREWELL", color: getCssVar('--event-color-nontech'), description: "Concluding ceremony and certificate distribution." },
+                ]
+            }
+        };
+
+       
+        function calculateRadialPosition(eventTime) {
+            const hours = Math.floor(eventTime);
+            const minutes = (eventTime - hours) * 100;
+            const totalMinutes = (hours * 60) + minutes;
+            const clockMinutes = totalMinutes % 720; 
+            
+            
+            let angle = ((clockMinutes / 720) * 360) - 90; 
+            angle = angle * (Math.PI / 180);
+
+            
+            const x = radius + radius * Math.cos(angle);
+            const y = radius + radius * Math.sin(angle);
+
+            return { top: y, left: x };
+        }
+
+        
+        function renderEvents(events, trackType) {
+            
+            calculateRadius();
+            renderDialNumbers(); 
+            gsap.to(document.querySelectorAll('.timeline-event'), {
+                opacity: 0,
+                duration: 0.2,
+                onComplete: () => {
+                    clockContainer.querySelectorAll('.timeline-event').forEach(el => el.remove());
+                    eventDetails.classList.remove('active');
+                    
+                    const isFlagship = trackType === 'flagship';
+                    let themeColor;
+                    if (isFlagship) {
+                        themeColor = getCssVar('--flagship-shadow-color'); 
+                    } else if (trackType === 'tech') {
+                        themeColor = getCssVar('--event-color-tech'); 
+                    } else {
+                        themeColor = getCssVar('--event-color-nontech'); 
+                    }
+                    
+
+                    centerDot.style.boxShadow = `0 0 10px ${themeColor}`;
+                    eventDetails.style.borderColor = themeColor;
+                    document.getElementById('detailsTitle').style.color = themeColor;
+                    document.querySelector('h1').style.color = themeColor;
+                    digitalTimeDisplay.style.color = themeColor; 
+                    minuteHand.style.setProperty('background', themeColor); 
+
+                    events.forEach((event, index) => {
+                        const { top, left } = calculateRadialPosition(event.time);
+                        
+                        const eventDiv = document.createElement('div');
+                        const eventClass = isFlagship ? 'flagship-size' : '';
+                        eventDiv.className = `timeline-event ${eventClass}`;
+                        eventDiv.style.top = `${top}px`;
+                        eventDiv.style.left = `${left}px`;
+                        
+                        if (!isFlagship) {
+                            eventDiv.style.color = event.color; 
+                        } else {
+                            eventDiv.style.color = getCssVar('--event-color-flagship'); 
+                        }
+                        const [h, m] = String(event.time).split('.');
+                        const hour = parseInt(h);
+                        const minutes = (m || '00').padEnd(2, '0');
+                        const ampm = hour >= 12 && hour !== 24 ? 'PM' : 'AM';
+                        const displayHour = hour % 12 || 12;
+                        const displayTime = `${String(displayHour).padStart(2, '0')}:${minutes} ${ampm}`;
+
+                        eventDiv.innerHTML = `
+                            <div class="event-time">${displayTime}</div>
+                            <div class="event-title">${event.title}</div>
+                        `;
+                        
+                        eventDiv.addEventListener('click', (e) => {
+                            e.stopPropagation(); 
+                            showDetails(event, displayTime, themeColor);
+                        });
+                        
+                        clockContainer.appendChild(eventDiv);
+                    
+                        gsap.fromTo(eventDiv, 
+                            { opacity: 0, scale: 0.8 },
+                            { opacity: 1, scale: 1, duration: 0.5, delay: index * 0.1, ease: "back.out(1.7)" }
+                        );
+                    });
+                }
+            });
+        }
+        
+        function showDetails(event, displayTime, themeColor) {
+            document.getElementById('detailsTitle').textContent = event.title;
+            document.getElementById('detailsTime').textContent = `Time: ${displayTime}`;
+            document.getElementById('detailsDesc').textContent = `Details: ${event.description}`;
+            
+            eventDetails.style.borderColor = themeColor;
+            document.getElementById('detailsTitle').style.color = themeColor;
+
+            eventDetails.classList.add('active');
+            
+            setTimeout(() => {
+                document.body.addEventListener('click', function hide(e) {
+                  
+                    if (!e.target.closest('.timeline-event') && !e.target.closest('.event-details')) {
+                        eventDetails.classList.remove('active');
+                        document.body.removeEventListener('click', hide);
+                    }
+                }, { once: true }); 
+            }, 10);
+        }
+
+        tabsContainer.addEventListener('click', (e) => {
+            const button = e.target.closest('.tab-button');
+            if (!button) return;
+
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const track = button.getAttribute('data-track');
+            
+            let selectedEvents;
+            if (track === 'flagship') {
+                selectedEvents = eventData.flagship;
+            } else {
+                const day = button.getAttribute('data-day');
+                selectedEvents = eventData[day][track];
+            }
+
+            renderEvents(selectedEvents, track);
+        });
+        
+        
+      
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const displayHour = hours % 12 || 12; 
+            const timeString = `${String(displayHour).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${ampm}`;
+            digitalTimeDisplay.textContent = timeString;
+
+         
+            const minuteAngle = (minutes * 6) + (seconds * 0.1) + 180; 
+            const hourAngle = ((hours % 12) * 30) + (minutes * 0.5) + (seconds * (0.5 / 60)) + 180; 
+            
+          
+            gsap.set(hourHand, { rotation: hourAngle });
+            gsap.set(minuteHand, { rotation: minuteAngle });
+        }
+        
+        setInterval(updateClock, 1000);
+        
+
+      
+        function initializeLayout() {
+           
+            calculateRadius();
+            renderDialNumbers(); 
+           
+            gsap.set(hourHand, { height: radius * 0.4 });
+            gsap.set(minuteHand, { height: radius * 0.65 });
+            
+
+            renderEvents(eventData.day1.tech, 'tech');
+            updateClock();
+        }
+        
+     
+        initializeLayout(); 
+        window.addEventListener('resize', initializeLayout);
+    </script>
 </body>
 </html>
