@@ -31,8 +31,8 @@
         <li><a href="home.html">Home</a></li>
         <li><a href="tevents.html">Events</a></li>
          <li><a href="timeline.html">Timeline</a></li>
-        <li><a href="members.html">Committee</a></li>
-         <li><a href="contact.html">Contact</a></li>
+        <li><a href="#contactpage">Contact</a></li>
+         <li><a href="https://shakthi.pythonanywhere.com/">Virtual Tour</a></li>
         <button>Register</button>
     </ul>
   
@@ -41,9 +41,15 @@
 <div class="cit">
     <h1>COIMBATORE INSTITUTE OF TECHNOLOGY</h1>
     <h2>DEPARTMENT OF ELECTRICAL AND ELECTRONICS ENGINEERING</h2>
+    <h2 class="present">Presents</h2>
 </div>
+<div class="logo">
+    <h1>ELECTERA'26</h1>
 
-
+</div>
+<div class="date">
+    <p>FEBRUARY 06 & 07</p>
+</div>
 <div class="prizepool">
   <div class="prizebox">
   <h2>PRIZE POOL</h2>
@@ -65,7 +71,7 @@ let counter = setInterval(() => {
 }, 20);
 </script>
 
-<h2 class="heading">EVENT START IN</h2>
+<h2 class="heading">COUTDOWN</h2>
 <div class="timer-container">
     
     <div class="timer">
@@ -115,21 +121,12 @@ let counter = setInterval(() => {
     setInterval(updateTimer, 1000);
     updateTimer();
   </script>
-  <h2 class="heading">ABOUT</h2>
- <div class="about_cit">
-
-    <div id="one"><img src="cit.jpg"></div>
-    
-    <div id="two"><p>the institute strives to develop world-class engineers who possess strong technical foundations, a forward-looking mindset, and the ability to create innovative solutions that benefit the nation and the global community. CIT’s vision focuses on nurturing individuals who not only excel in engineering knowledge but also embody deep social responsibility, enabling them to address present and future challenges with confidence and commitment. The institute’s core values reflect its dedication to holistic growth—advancing society through impactful technology, enhancing student employability through industry-ready skills, and ensuring quality education supported by modern infrastructure, cutting-edge curricula, vibrant research culture, and an enriching academic environment. With a strong emphasis on merit recognition, transparency, empathy, and continuous improvement, CIT remains a symbol of excellence, inspiring students to strive, achieve, and contribute meaningfully to the world.</p>
-    <center><button onclick="window.location.href='https://www.cit.edu.in/'">View more</button></center>
-</div>   
-  </div>
- <div class="ph">
+   <div class="ph">
  <h2 >ELECTERA-25</h2>
 </div> 
 <div class="photo">
   
-   <div id="elec25"><p>Electera is the annual national level technical symposium of the Department of Electrical and Electronics Engineering at Coimbatore Institute of Technology (CIT). Established in 2004, Electera has grown to become one of the most prestigious technical events in South India, attracting participation from top engineering colleges across the country. The symposium serves as a platform for students to showcase their technical skills, creativity, and innovation through a variety of events, workshops, and competitions. With a focus on fostering collaboration and knowledge sharing, Electera provides an opportunity for students to interact with industry experts, academicians, and fellow enthusiasts. The event not only promotes technical excellence but also encourages holistic development by incorporating cultural and social activities. Over the years, Electera has earned a reputation for its well-organized events, cutting-edge themes, and enthusiastic participation, making it a highlight in the academic calendar of CIT and a significant contributor to the technical community.</p>
+   <div id="elec25"><p>Electera’25 is a national-level technical symposium organized by the Department of Electrical and Electronics Engineering, bringing together innovative minds to showcase ideas, projects, and technical skills. The event features competitions, workshops, paper presentations, and interactive sessions that inspire learning, creativity, and excellence in emerging technologies. It serves as a dynamic platform for students to explore, engage, and elevate their engineering potential.</p>
 </div>
 <img id="slideImage" src="electera1.jpg"></div>
    
@@ -137,8 +134,10 @@ let counter = setInterval(() => {
 let images = [
     "electera1.jpg",
     "electera2.jpg",
-    "electera1.jpg",
-   "electera2.jpg"
+    "img1.jpg",
+     "img2.jpg",
+       "img5.jpg",
+    "img6.jpg"
 ];
 
 let index = 0;
@@ -193,8 +192,19 @@ setInterval(function(){
 </div>
 </div>
 
+  <h2 class="heading">ABOUT</h2>
+ <div class="about_cit">
 
-  <br><br><br>
+    <div id="one"><img src="cit.jpg"></div>
+    
+    <div id="two"><p>The V. Rangasamy Naidu Educational Trust devoted to the cause of promoting technical and scientific literacy, established Coimbatore Institute of Technology (CIT) in Coimbatore, Tamil Nadu, South India in 1956.
+CIT is one of the most reputed and prestigious educational institutions in India. The Institute backed by World Class research and development over the years attained autonomous status in 1987.</p>
+    <center><button onclick="window.location.href='https://www.cit.edu.in/'">View more</button></center>
+</div>   
+  </div>
+
+
+
 
 <p class="end"> SPECIAL THANKS TO</p> 
 
@@ -258,7 +268,75 @@ setInterval(function(){
 
    
 </div>
+<div id="contactpage">
 
+ 
+    <title>Electera 26 - Social & Contact</title>
+
+
+
+    <h1>CONTACT</h1>
+
+    <section class="glass-card">
+        <h3 class="section-title">SOCIAL MEDIA</h3>
+
+        <div class="social-list">
+            <a href="#" class="social-item">
+                <i class="ri-instagram-line"></i>
+                <span>Instagram</span>
+            </a>
+
+          
+
+            <a href="#" class="social-item">
+                <i class="ri-linkedin-line"></i>
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="#" class="social-item">
+                <i class="ri-external-link-line"></i>
+                <span>Unstop</span>
+            </a>
+        </div>
+
+       
+    </section>
+
+
+    <section class="contact-section">
+        
+        <p>This form is for contacting the ELECTERA'26 team.</p>
+
+        <div class="card">
+            <form>
+                <label>Name</label>
+                <input type="text" placeholder="Your name">
+
+                <label>Email</label>
+                <input type="email" placeholder="you@example.com">
+
+                <label>Message</label>
+                <textarea placeholder="How can we help?"></textarea>
+
+                <button type="submit">Send message</button>
+            </form>
+
+            <p class="note">All messages will be received by our team.</p>
+        </div>
+    </section>
+
+    <center>
+        <h1 style="margin:10px">LOCATION</h1>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8768.891350197258!2d77.02409874536033!3d11.028375433180264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba858979f85136b%3A0xdd9ca28d3c37cf8a!2sCoimbatore%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1765462562727!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</center>
+</div>
+
+<footer class="footer">
+    
+        © 2025 ELECTERA 26. All rights reserved.
+    
+
+</footer>
 
 </body>
 </html>
